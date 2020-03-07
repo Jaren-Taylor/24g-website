@@ -12,7 +12,7 @@
       <button @click="updateComments()">Post</button>
       <hr />
     </div>
-    <li id="comments" v-for="comment in comments" v-bind:key="comment.date">
+    <li id="comments" v-for="comment in comments" v-bind:key="comment.id">
       <div id="single_comment">
         <span id="comment_date">comment posted on {{comment.date}}</span>
         <h4 id="comment_text">{{comment.content}}</h4>
@@ -39,6 +39,7 @@ export default {
   },
   methods: {
     updateComments() {
+      console.log('here');
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, "0");
       var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -47,12 +48,13 @@ export default {
       today = mm + "/" + dd + "/" + yyyy;
       var comment = {
         date: "",
-        content: ""
+        content: "",
+        id:''
       };
       comment.content = document.getElementById("input_box").value;
       comment.date = today;
+      comment.id = Date.now();
       if (comment.content != "") {
-        this.comments.push(comment);
         document.getElementById("input_box").value = "";
         this.$emit("new_comment", comment);
       }

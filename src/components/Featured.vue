@@ -2,7 +2,7 @@
   <div id="Featured">
     <h3>Featured Videos</h3>
     <hr />
-    <li v-for="video in videos" v-bind:key="video">
+    <li v-for="video in videos" v-bind:key="video.id">
       <h4 v-if="video.show">{{video.title}}</h4>
       <img
         v-if="video.show"
@@ -31,7 +31,8 @@ export default {
           dislikes: 0,
           views: 0,
           show: true,
-          comments: []
+          comments: [],
+          id: 1
         },
         {
           title: "CES Overview",
@@ -43,7 +44,8 @@ export default {
           dislikes: 0,
           views: 0,
           show: true,
-          comments: []
+          comments: [],
+          id: 2
         },
         {
           title: "Future of Drones",
@@ -55,7 +57,8 @@ export default {
           dislikes: 0,
           views: 0,
           show: true,
-          comments: []
+          comments: [],
+          id: 3
         }
       ]
     };

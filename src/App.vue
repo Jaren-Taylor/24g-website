@@ -22,7 +22,6 @@
     <Comments
       v-on:new_comment="updateComments"
       :video="video_comment_data"
-      v-on:video_loaded="showCurrentComments"
       :curr_video="child_data"
     ></Comments>
     <br />
@@ -72,9 +71,6 @@ export default {
     commentUpdated(video_comment) {
       this.video_comment_data = video_comment;
     },
-    showCurrentComments() {
-      this.video_comment_data = this.child_data;
-    }
   }
 };
 </script>
